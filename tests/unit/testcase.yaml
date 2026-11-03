@@ -1,0 +1,9 @@
+tests:
+  unit.led_module:
+    tags:
+      - led
+      - ztest
+    platform_allow:
+      - native_sim
+    integration_platforms:
+      - native_sim

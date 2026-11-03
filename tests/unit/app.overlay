@@ -1,0 +1,39 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/ {
+	test_gpio: test_gpio {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		gpio-controller;
+		#gpio-cells = <2>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		zephyr,deferred-init;
+	};
+
+	test_leds {
+		compatible = "gpio-leds";
+		test_led_0: test_led_0 {
+			gpios = <&test_gpio 0 GPIO_ACTIVE_HIGH>;
+			label = "Test LED 0";
+		};
+		test_led_1: test_led_1 {
+			gpios = <&test_gpio 1 GPIO_ACTIVE_HIGH>;
+			label = "Test LED 1";
+		};
+		test_led_2: test_led_2 {
+			gpios = <&test_gpio 2 GPIO_ACTIVE_HIGH>;
+			label = "Test LED 2";
+		};
+	};
+
+	aliases {
+		led0 = &test_led_0;
+		led1 = &test_led_1;
+		led2 = &test_led_2;
+	};
+};
