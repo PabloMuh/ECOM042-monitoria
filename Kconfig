@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: Apache-2.0
+
+mainmenu "Mini-shell via UART"
+
+config CMD_BUFFER_SIZE
+	int "Shell command line buffer size"
+	default 64
+	help
+	  Fixed size for the shell command line buffer.
+	  Lines exceeding this size will be discarded with 'ERR: line too long'.
+
+source "Kconfig.zephyr"
